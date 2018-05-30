@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<title></title>
+	</head>
+	<body>
+		<table border="1px">
+			<tr>
+				<td>学号</td>
+				<td>姓名</td>
+				<td>成绩</td>
+				<td>操作</td>
+			</tr>
+			<tr>
+				<td>1000</td>
+				<td>王军</td>
+				<td>89</td>
+				<td><input type="button" value="删除" /></td>
+			</tr>
+			<tr>
+				<td>2000</td>
+				<td>杨帆</td>
+				<td>59</td>
+				<td><input type="button" value="删除" /></td>
+			</tr>
+			<tr>
+				<td>3000</td>
+				<td>刘莉莉</td>
+				<td>70</td>
+				<td><input type="button" value="删除" /></td>
+			</tr>
+			<tr>
+				<td>4000</td>
+				<td>欧阳东</td>
+				<td>40</td>
+				<td><input type="button" value="删除" /></td>
+			</tr>
+		</table>
+		<script src="js/jquery-3.2.1.min.js"></script>
+		<script>
+			$(function(){
+				$("input:button").hide();
+				$("table tr:gt(0)").each(function(index,item){
+					var score = $(this).children(":eq(2)");
+					if(parseInt(score.text())<=60)
+					{
+						score.next().children().show();
+						score.parent().css("color","red");
+					}
+					score.next().children().click(function(){
+						score.parent().remove();
+					});
+					
+				});
+			})
+		</script>
+	</body>
+</html>
